@@ -1,0 +1,35 @@
+<h2>Buscar por region <small> {{regionActiva | titlecase}} </small></h2>
+<hr>
+
+<h5>Seleccione la region</h5>
+
+
+<!-- [class.btn-primary]="region === regionActiva" -->
+
+<!-- [ngClass]="{
+    'btn-primary' : regionActiva === region,
+    'btn-outline-primary' : regionActiva !== region
+}" -->
+
+
+<div class="row">
+    <div class="col">
+        <button *ngFor="let region of regiones" [class]="estiloCSS(region)" (click)="activarRegion( region )">
+            {{ region | titlecase }}
+        </button>
+
+    </div>
+
+</div>
+
+
+
+<div *ngIf="paises.length >= 1" class="row">
+    <div class="col">
+        <app-pais-tabla [paisList]="paises"></app-pais-tabla>
+    </div>
+</div>
+
+<div *ngIf="estaCargando === true" class="alert alert-info">
+    Espere por favor...
+</div>
